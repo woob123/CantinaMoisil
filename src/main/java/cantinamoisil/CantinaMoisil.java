@@ -12,6 +12,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -37,14 +38,25 @@ public class CantinaMoisil {
             .nutrition(1)
             .saturationMod(0.4f)
             .build())));
+
+    public static final Holder<Item> PIZZA = ITEMS.register("pizza", () -> new Pizza(new Item.Properties().rarity(Rarity.RARE).food(new FoodProperties.Builder()
+            .nutrition(4)
+            .saturationMod(1.2F)
+            .effect(new MobEffectInstance(MobEffects.REGENERATION, 400, 1), 1.0F)
+            .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 6000, 0), 1.0F)
+            .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 6000, 0), 1.0F)
+            .effect(new MobEffectInstance(MobEffects.ABSORPTION, 2400, 3), 1.0F)
+            .alwaysEat()
+            .build())));
     public static final Holder<CreativeModeTab> MY_TAB = TABS.register("mytab", () -> CreativeModeTab.builder()
             .title(Component.literal("Cantina"))
-            .icon(() -> BEANBOWL.value().getDefaultInstance())
+            .icon(() -> PIZZA.value().getDefaultInstance())
 
             .displayItems((pParameters, pOutput) -> {
                 pOutput.accept(BEANBOWL.value());
                 pOutput.accept(BEANS.value());
-            }).build());
+            pOutput.accept(PIZZA.value());
+        }).build());
 
     public CantinaMoisil(IEventBus bus) {
         ITEMS.register(bus);

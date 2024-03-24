@@ -28,9 +28,9 @@ public class Beanbowl extends Item {
 
     @Override
     public void appendHoverText(@NotNull ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, @NotNull TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(Component.literal("Bomba atomica").withStyle(ChatFormatting.DARK_AQUA));
+        pTooltipComponents.add(Component.literal("Tsar bomba").withStyle(ChatFormatting.DARK_AQUA, ChatFormatting.ITALIC));
     }
-
+    ///obfuscated text -> the weird unreadable text
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity){
         if (!level.isClientSide && livingEntity instanceof Player player) {
@@ -58,10 +58,10 @@ public class Beanbowl extends Item {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-        if (pPlayer.getFoodData().getFoodLevel() <= 4) {
-            return super.use(pLevel, pPlayer, pUsedHand);
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
+        if (player.getFoodData().getFoodLevel() <= 4) {
+            return super.use(level, player, usedHand);
         }
-        return InteractionResultHolder.fail(pPlayer.getItemInHand(pUsedHand));
+        return InteractionResultHolder.fail(player.getItemInHand(usedHand));
     }
 }

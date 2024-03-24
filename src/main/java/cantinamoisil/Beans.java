@@ -4,9 +4,7 @@ import net.minecraft.world.item.Item;
 
 public class Beans extends Item {
 
-    public Beans(Properties pProperties) {
-        super(pProperties);
+    public Beans(Properties properties) {
+        super(properties);
     }
-
-
 }
