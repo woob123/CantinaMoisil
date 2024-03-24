@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xxx",
+    "xxx",
+    " y "
+  ],
+  "key": {
+    "y": {
+      "item": "minecraft:bowl"
+    },
+    "x": {
+      "item": "cantinamoisil:beans"
+    }
+  },
+  "result": {
+    "item": "cantinamoisil:beanbowl"
+  }
+}
