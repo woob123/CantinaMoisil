@@ -31,6 +31,8 @@ public class Beanbowl extends Item {
         pTooltipComponents.add(Component.literal("Tsar bomba").withStyle(ChatFormatting.DARK_AQUA, ChatFormatting.ITALIC));
     }
     ///obfuscated text -> the weird unreadable text
+
+    ///What happens when you finish using an item
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity livingEntity){
         if (!level.isClientSide && livingEntity instanceof Player player) {
@@ -42,6 +44,8 @@ public class Beanbowl extends Item {
                 player.kill();
             }
         }
+
+        ///Particle cloud
         if (!level.isClientSide) {
             AreaEffectCloud areaeffectcloud = new AreaEffectCloud(level, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ());
             areaeffectcloud.setOwner(livingEntity);
@@ -57,6 +61,7 @@ public class Beanbowl extends Item {
         return super.finishUsingItem(stack, level, livingEntity);
     }
 
+    ///Can you eat it or not? (are you hungry enough)
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
         if (player.getFoodData().getFoodLevel() <= 4) {
